@@ -5,7 +5,10 @@ export default styled.div`
   height: 50px;
   margin: 20px;
 
+  font-family: 'Mountains of Christmas';
   font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 7px;
 
   display: flex;
   align-items: center;
