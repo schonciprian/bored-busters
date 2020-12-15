@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import SliderBar from "./SliderBar";
-import StyledGetRandomButton from "./styledComponents/StyledGetRandomButton";
+import StyledGetButton from "./styledComponents/StyledGetButton";
 import StyledActivityContainer from "./styledComponents/StyledActivityContainer";
 
 import { SlideValueContext } from "../contextComponents/SlideValueContext";
@@ -60,9 +60,9 @@ export default function SearchByCost() {
         <SliderBar />
       </div>
       <div style={searchBoxStyle}>
-        <StyledGetRandomButton onClick={getActivity}>
+        <StyledGetButton onClick={getActivity}>
           Give me an activity!
-        </StyledGetRandomButton>
+        </StyledGetButton>
       </div>
       {activity ? (
         <StyledActivityContainer style={{ width: "800px" }}>
@@ -106,9 +106,9 @@ export default function SearchByCost() {
         <SliderBar />
       </div>
       <div style={searchBoxStyle}>
-        <StyledGetRandomButton onClick={getActivity}>
+        <StyledGetButton onClick={getActivity}>
           Give me an activity!
-        </StyledGetRandomButton>
+        </StyledGetButton>
       </div>
     </div>
   );
