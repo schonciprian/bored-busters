@@ -1,32 +1,38 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import axios from "axios";
-
+import StyledGetRandomButton from "./styledComponents/StyledGetRandomButton";
 
 export default function Header() {
+  const [randomActivity, setrandomActivity] = useState([]);
 
-    const [randomActivity, setrandomActivity] = useState([]);
+  const getRandomActivity = () => {
+    axios
+      .get("http://www.boredapi.com/api/activity/")
+      .then((response) => setrandomActivity(response.data));
+  };
 
-    const getRandomActivity = () => {
-        axios
-            .get("http://www.boredapi.com/api/activity/")
-            .then((response) => setrandomActivity(response.data))
-    }
+  const { activity, type, participants, price } = randomActivity;
 
-    const {
-        activity,
-        type,
-        participants,
-        price
-    } = randomActivity;
-
-    return randomActivity.length !== 0 ? (
+  return randomActivity.length !== 0 ? (
+    <div>
+      <StyledGetRandomButton onClick={getRandomActivity}>
+        Give me a random activity!
+      </StyledGetRandomButton>
+      <div>{activity}</div>
+      <div>Type: {type}</div>
+      {randomActivity.link ? (
         <div>
-            <div onClick={getRandomActivity}>GETRANDOM</div>
-
-            <div>{activity}</div>
-            <div>Type: {type}</div>
-            <div>Number of participants:{participants}</div>
-            <div>Price: {price * 10000}</div>
+          Visit: <a href={randomActivity.link}> {randomActivity.link}</a>{" "}
         </div>
-    ) : (<div onClick={getRandomActivity}>GETRANDOM</div>);
+      ) : (
+        ""
+      )}
+      <div>Number of participants:{participants}</div>
+      <div>Price: {price * 10000}</div>
+    </div>
+  ) : (
+    <StyledGetRandomButton onClick={getRandomActivity}>
+      Give me a random activity!
+    </StyledGetRandomButton>
+  );
 }
