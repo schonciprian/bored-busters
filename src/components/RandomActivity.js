@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import StyledGetRandomButton from "./styledComponents/StyledGetRandomButton";
 
 export default function Header() {
   const [randomActivity, setrandomActivity] = useState([]);
@@ -10,25 +11,13 @@ export default function Header() {
       .then((response) => setrandomActivity(response.data));
   };
 
-  const getRandomButtonStyle = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    cursor: "pointer",
-    background: "blue",
-    borderRadius: "10px",
-    width: "225px",
-    height: "25px",
-    color: "#fff",
-  };
-
   const { activity, type, participants, price } = randomActivity;
 
   return randomActivity.length !== 0 ? (
     <div>
-      <div onClick={getRandomActivity} style={getRandomButtonStyle}>
+      <StyledGetRandomButton onClick={getRandomActivity}>
         Give me a random activity!
-      </div>
+      </StyledGetRandomButton>
       <div>{activity}</div>
       <div>Type: {type}</div>
       {randomActivity.link ? (
@@ -42,8 +31,8 @@ export default function Header() {
       <div>Price: {price * 10000}</div>
     </div>
   ) : (
-    <div onClick={getRandomActivity} style={getRandomButtonStyle}>
+    <StyledGetRandomButton onClick={getRandomActivity}>
       Give me a random activity!
-    </div>
+    </StyledGetRandomButton>
   );
 }
