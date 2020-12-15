@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export default styled.div`
     width: 820px;
-    min-height: 440px;
+    min-height: 100px;
     margin: 20px;
 
     font-family: 'Mountains of Christmas';
