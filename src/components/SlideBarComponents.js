@@ -195,6 +195,7 @@ export function Tick({ tick, count, format }) {
     <div>
       <div
         style={{
+          color: "#fff",
           position: "absolute",
           marginTop: 14,
           width: 1,
@@ -205,6 +206,7 @@ export function Tick({ tick, count, format }) {
       />
       <div
         style={{
+          color: "#fff",
           position: "absolute",
           marginTop: 22,
           fontSize: 10,
