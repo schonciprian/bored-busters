@@ -37,8 +37,10 @@ export default function Header() {
       </div>
     </StyledActivityContainer>
   ) : (
-      <StyledGetRandomButton onClick={getRandomActivity}>
-        Give me a random activity!
-      </StyledGetRandomButton>
+      <StyledActivityContainer>
+        <StyledGetRandomButton style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }} onClick={getRandomActivity}>
+          Give me a random activity!
+        </StyledGetRandomButton>
+      </StyledActivityContainer>
     );
 }
