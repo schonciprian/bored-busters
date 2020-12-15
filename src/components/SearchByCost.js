@@ -1,95 +1,64 @@
-import React, { Component } from "react";
-import { Slider, Rail, Handles, Tracks, Ticks } from "react-compound-slider";
-import { SliderRail, Handle, Track, Tick } from "./SlideBarComponents";
+import React, { useContext } from "react";
+import axios from "axios";
+import SliderBar from "./SliderBar";
+import StyledGetRandomButton from "./styledComponents/StyledGetRandomButton";
+import { SlideValueContext } from "../contextComponents/SlideValueContext";
 
-const sliderStyle = {
-  position: "relative",
-  width: "65%",
-};
-
-const defaultValues = [0, 5000];
-
-class SearchByCost extends Component {
-  state = {
-    domain: [0, 10000],
-    values: defaultValues.slice(),
-    update: defaultValues.slice(),
-    reversed: false,
+export default function SearchByCost() {
+  const [contextValues] = useContext(SlideValueContext);
+  const searchCardStyle = {
+    margin: "30px",
+    width: "820px",
+    minHeight: "100px",
+    background: "#172251",
   };
 
-  onChange = (values) => {
-    this.setState({ values });
-    console.log(values);
+  const searchCardStyle2 = {
+    display: "flex",
+    flexDirection: "column",
+    position: "relative",
+    top: "30px",
+    left: "145px",
   };
 
-  setDomain = (domain) => {
-    this.setState({ domain });
+  const searchBoxStyle = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   };
 
-  toggleReverse = () => {
-    this.setState((prev) => ({ reversed: !prev.reversed }));
+  const getActivity = () => {
+    const min = contextValues.min / 10000;
+    const max = contextValues.max / 10000;
+    axios
+      .get(
+        `http://www.boredapi.com/api/activity?minprice=${min}&maxprice=${max}`
+      )
+      .then((response) => console.log(response));
   };
 
-  render() {
-    const {
-      state: { domain, values, reversed },
-    } = this;
-
-    return (
-      <div style={{ height: 150, width: "100%" }}>
-        <Slider
-          mode={2}
-          step={1000}
-          domain={domain}
-          reversed={reversed}
-          rootStyle={sliderStyle}
-          onChange={this.onChange}
-          values={values}
-        >
-          <Rail>
-            {({ getRailProps }) => <SliderRail getRailProps={getRailProps} />}
-          </Rail>
-          <Handles>
-            {({ handles, getHandleProps }) => (
-              <div className="slider-handles">
-                {handles.map((handle) => (
-                  <Handle
-                    key={handle.id}
-                    handle={handle}
-                    domain={domain}
-                    getHandleProps={getHandleProps}
-                  />
-                ))}
-              </div>
-            )}
-          </Handles>
-          <Tracks left={false} right={false}>
-            {({ tracks, getTrackProps }) => (
-              <div className="slider-tracks">
-                {tracks.map(({ id, source, target }) => (
-                  <Track
-                    key={id}
-                    source={source}
-                    target={target}
-                    getTrackProps={getTrackProps}
-                  />
-                ))}
-              </div>
-            )}
-          </Tracks>
-          <Ticks count={10}>
-            {({ ticks }) => (
-              <div className="slider-ticks">
-                {ticks.map((tick) => (
-                  <Tick key={tick.id} tick={tick} count={ticks.length} />
-                ))}
-              </div>
-            )}
-          </Ticks>
-        </Slider>
+  return (
+    <div style={searchCardStyle}>
+      <p
+        style={{
+          textAlign: "center",
+          fontFamily: "Mountains of Christmas",
+          fontSize: "30px",
+          fontWeight: "900",
+          letterSpacing: "7px",
+          color: "#72CD55",
+        }}
+      >
+        Select your price range!
+      </p>
+      <div style={searchCardStyle2}>
+        <SliderBar />
       </div>
-    );
-  }
+      <div style={searchBoxStyle}>
+        <StyledGetRandomButton onClick={getActivity}>
+          Give me an activity!
+        </StyledGetRandomButton>
+      </div>
+    </div>
+  );
 }
-
-export default SearchByCost;
