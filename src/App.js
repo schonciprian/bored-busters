@@ -1,4 +1,5 @@
 import "./App.css";
+import "./Snowflake.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
@@ -7,11 +8,13 @@ import RandomActivity from "./components/RandomActivity";
 import SearchByCost from "./components/SearchByCost";
 import SearchByParticipants from "./components/SearchByParticipants";
 import { SlideValueContextProvider } from "./contextComponents/SlideValueContext";
+import SnowFlakes from "./components/SnowFlakes";
 
 function App() {
   return (
     <Router>
       <div className="App">
+        <SnowFlakes />
         <Header />
         <Navbar />
 
