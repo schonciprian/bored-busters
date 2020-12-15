@@ -15,7 +15,6 @@ export default styled.div`
     align-items: flex-start;
     /* justify-content: center; */
 
-    cursor: pointer;
     border-radius: 10px;
    
     background: #172251;
