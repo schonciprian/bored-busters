@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import StyledGetRandomButton from "./styledComponents/StyledGetRandomButton";
+import StyledGetButton from "./styledComponents/StyledGetButton";
 import StyledActivityContainer from "./styledComponents/StyledActivityContainer";
 
 export default function Header() {
@@ -16,9 +16,12 @@ export default function Header() {
 
   return randomActivity.length !== 0 ? (
     <StyledActivityContainer>
-      <StyledGetRandomButton style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }} onClick={getRandomActivity}>
+      <StyledGetButton
+        style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }}
+        onClick={getRandomActivity}
+      >
         Give me a random activity!
-      </StyledGetRandomButton>
+      </StyledGetButton>
 
       <div>
         <div style={{ fontSize: "35px", height: "100px" }}>{activity}</div>
@@ -29,7 +32,9 @@ export default function Header() {
           <div>
             Visit: <a href={randomActivity.link} target="_blank" rel="noopener noreferrer"> {randomActivity.link}</a>{" "}
           </div>
-        ) : ("")}
+        ) : (
+          ""
+        )}
 
         <div>Number of participants:{participants}</div>
 
@@ -37,10 +42,13 @@ export default function Header() {
       </div>
     </StyledActivityContainer>
   ) : (
-      <StyledActivityContainer>
-        <StyledGetRandomButton style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }} onClick={getRandomActivity}>
-          Give me a random activity!
-        </StyledGetRandomButton>
-      </StyledActivityContainer>
-    );
+    <StyledActivityContainer>
+      <StyledGetButton
+        style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }}
+        onClick={getRandomActivity}
+      >
+        Give me a random activity!
+      </StyledGetButton>
+    </StyledActivityContainer>
+  );
 }
