@@ -30,7 +30,7 @@ export default function Header() {
 
         {randomActivity.link ? (
           <div>
-            Visit: <a href={randomActivity.link}> {randomActivity.link}</a>{" "}
+            Visit: <a href={randomActivity.link} target="_blank" rel="noopener noreferrer"> {randomActivity.link}</a>{" "}
           </div>
         ) : (
           ""

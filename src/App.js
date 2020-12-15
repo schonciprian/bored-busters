@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import RandomActivity from "./components/RandomActivity";
 import SearchByCost from "./components/SearchByCost";
+import Participants from './components/Participants';
 import { SlideValueContextProvider } from "./contextComponents/SlideValueContext";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <SlideValueContextProvider>
             <Route path="/cost" component={SearchByCost}></Route>
           </SlideValueContextProvider>
+          <Route path="/participants" component={Participants}></Route>
         </div>
       </div>
     </Router>
