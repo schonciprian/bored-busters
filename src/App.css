@@ -1,0 +1,34 @@
+body {
+    background-color: #4B5C8D;
+    user-select: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome {
+    padding: 10px;
+    margin: 40px;
+
+    font-family: 'Mountains of Christmas';
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 7px;
+    text-align: justify;
+
+    color: #F7B900;
+}
+
+@media (max-width: 640px) {
+    .welcome {
+        font-size: 10px; 
+    }     
+  }
