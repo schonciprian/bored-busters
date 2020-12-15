@@ -2,35 +2,43 @@ import React, { useState } from "react";
 import axios from "axios";
 import StyledGetRandomButton from "./styledComponents/StyledGetRandomButton";
 import StyledActivityContainer from "./styledComponents/StyledActivityContainer";
+import StyledInputContainer from "./styledComponents/StyledInputContainer";
 
 export default function Header() {
     const [participantsActivity, setparticipantsActivity] = useState([]);
-    const [inputParticipants, setparticipants] = useState([3]);
+    const [inputParticipants, setparticipants] = useState([]);
 
-    const getRandomActivity = () => {
+    const getParticipantsActivity = () => {
         axios
             .get(`http://www.boredapi.com/api/activity?participants=${inputParticipants}`)
             .then((response) => setparticipantsActivity(response.data));
     };
+
+    const clearFields = () => {
+        setparticipants("");
+    }
 
     const { activity, type, participants, price } = participantsActivity;
 
     return participantsActivity.length !== 0 ? (
         <StyledActivityContainer>
 
-            <div>
+            <StyledInputContainer>Participants number:
                 <input
+                    className="input"
                     type="text"
                     value={inputParticipants}
+                    placeholder={inputParticipants}
                     onChange={e => setparticipants(e.target.value)}
+                    onFocus={clearFields}
                 />
-            </div>
+            </StyledInputContainer>
 
-            <StyledGetRandomButton style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }} onClick={getRandomActivity}>
-                Give me a random activity!
+            <StyledGetRandomButton style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }} onClick={getParticipantsActivity}>
+                Give me the activity!
             </StyledGetRandomButton>
 
-            <div>
+            {participantsActivity.activity ? (<div>
                 <div style={{ fontSize: "35px", height: "100px" }}>{activity}</div>
 
                 <div>Type: {type}</div>
@@ -44,13 +52,24 @@ export default function Header() {
                 <div>Number of participants:{participants}</div>
 
                 <div>Price: {price * 10000}</div>
-            </div>
+            </div>) : (<div>"No activity was found!"</div>)}
         </StyledActivityContainer>
     ) : (
             <StyledActivityContainer>
-                <StyledGetRandomButton style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }} onClick={getRandomActivity}>
-                    Give me a random activity!
-        </StyledGetRandomButton>
+                <StyledInputContainer>Participants number:
+                    <input
+                        className="input"
+                        type="text"
+                        value={inputParticipants}
+                        placeholder={inputParticipants}
+                        onChange={e => setparticipants(e.target.value)}
+                        onFocus={clearFields}
+                    />
+                </StyledInputContainer>
+
+                <StyledGetRandomButton style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }} onClick={getParticipantsActivity}>
+                    Give me the activity!
+                </StyledGetRandomButton>
             </StyledActivityContainer>
         );
 }
