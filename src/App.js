@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import RandomActivity from './components/RandomActivity';
+import ActivityType from './components/ActivityType';
 
 
 function App() {
@@ -12,10 +13,10 @@ function App() {
       <div className="App">
         <Header />
         <Navbar />
-
         <div className="container">
           <Route exact path="/" component={Home}></Route>
           <Route path="/random" component={RandomActivity}></Route>
+          <Route path="/type" component={ActivityType}></Route>
         </div>
       </div>
     </Router>
