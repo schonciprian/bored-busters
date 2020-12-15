@@ -52,7 +52,7 @@ export default function Header() {
                 <div>Number of participants:{participants}</div>
 
                 <div>Price: {price * 10000}</div>
-            </div>) : (<div>"No activity was found!"</div>)}
+            </div>) : (<div style={{ margin: "20px auto" }}>No activity was found!</div>)}
         </StyledActivityContainer>
     ) : (
             <StyledActivityContainer>
