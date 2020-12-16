@@ -19,7 +19,13 @@ export default function FavoriteButton(props) {
       }
       return removeItem(prevCollection);
     });
-  };
+
+    if (props.setSearchedFavorites) {
+      props.setSearchedFavorites((prevCollection) => {
+        return removeItem(prevCollection);
+      });
+    };
+  }
 
   return (
     <StyledFavButton style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }} onClick={updateFavorites}>
