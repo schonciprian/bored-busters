@@ -9,7 +9,7 @@ export default function Favorites() {
   const [favorites] = useContext(FavoriteContext);
 
   return favorites.map((fav) => (
-    <StyledActivityContainer style={{ width: "650px" }}>
+    <StyledActivityContainer>
       <React.Fragment>
         <FavoriteButton activity={fav} />
         <ActivityCardDetails activity={fav} />
