@@ -5,9 +5,9 @@ export default styled.div`
     min-height: 100px;
     margin: 20px;
 
-    font-family: 'Mountains of Christmas';
+    font-family: 'Chelsea Market';
     font-size: 20px;
-    font-weight: 900;
+    font-weight: 400;
     letter-spacing: 7px;
 
     display: flex;
@@ -18,6 +18,7 @@ export default styled.div`
     border-radius: 10px;
    
     background: #172251;
+    /* background: cyan; */
     color: #72CD55;
 
     div {
@@ -32,5 +33,16 @@ export default styled.div`
 
     a:hover {
       color: #FACF3E;
+    }
+
+    .details {
+      width: 780px;
+      color: #111111;
+      background-color: #6679AE;
+      border-radius: 20px;
+      margin: 20px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 `;
