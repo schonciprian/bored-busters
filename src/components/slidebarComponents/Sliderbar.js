@@ -20,7 +20,7 @@ const SearchByCost = () => {
   };
 
   return (
-    <div style={{ height: 150, width: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+    <div style={{ height: 50, width: "100%", display: "flex", justifyContent: "center", alignItems: "flex-start" }}>
       <Slider
         mode={2}
         step={1000}
