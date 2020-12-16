@@ -5,6 +5,8 @@ import FavoriteButton from "./searchComponents/FavoriteButton"
 import StyledActivityContainer from "../styledComponents/StyledActivityContainer"
 import StyledSelectContainer from "../styledComponents/StyledSelectContainer";
 import StyledInputContainer from "../styledComponents/StyledInputContainer";
+import StyledGetButton from "../styledComponents/StyledGetButton";
+
 
 import SliderBar from "../slidebarComponents/Sliderbar";
 import { SlideValueContext } from "../../contextComponents/SlideValueContext";
@@ -17,13 +19,22 @@ export default function Favorites() {
   const types = ["education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork"]
   const [activityType, setType] = useState("");
 
-  const [inputParticipants, setparticipants] = useState([]);
+  const [inputParticipants, setparticipants] = useState(1);
   const clearFields = () => {
     setparticipants("");
   };
 
-  console.log(contextValues.min, contextValues.max, activityType, inputParticipants);
+  const [searchedFavorites, setSearchedFavorites] = useState([]);
 
+  const filterActivities = () => {
+    setSearchedFavorites(favorites.filter(fav =>
+      fav.price >= contextValues.min / 10000 &&
+      fav.price <= contextValues.max / 10000)
+    )
+  }
+
+
+  console.log(searchedFavorites, contextValues.min, contextValues.max)
 
   return favorites.length !== 0 ? (
     <div>
@@ -50,9 +61,13 @@ export default function Favorites() {
         </StyledInputContainer>
 
         <SliderBar />
+
+        <StyledGetButton onClick={filterActivities}>
+          Give me an activity!
+        </StyledGetButton>
       </div>
 
-      {favorites.map((fav) => (
+      {searchedFavorites.map((fav) => (
         <StyledActivityContainer>
           <React.Fragment>
             <FavoriteButton activity={fav} />
