@@ -77,6 +77,11 @@ export default function Favorites() {
       )
     }
   }
+  if (currentPost.length === 0 && currentPage > 1) {
+    setCurrentPage(currentPage - 1);
+  }
+
+  // console.log(indexOfFirstPost, indexOfFirstPost, currentPost)
 
   return favorites.length !== 0 ? (
     <StyledFavoriteContainer>
@@ -112,7 +117,7 @@ export default function Favorites() {
       {currentPost.map((fav) => (
         <StyledActivityContainerForFavorites>
           <React.Fragment>
-            <FavoriteButton activity={fav} />
+            <FavoriteButton activity={fav} setSearchedFavorites={setSearchedFavorites} />
             <ActivityCardDetails activity={fav} />
           </React.Fragment>
         </StyledActivityContainerForFavorites>)
