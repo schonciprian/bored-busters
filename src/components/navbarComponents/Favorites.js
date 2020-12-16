@@ -19,7 +19,7 @@ export default function Favorites() {
   const types = ["education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork"]
   const [activityType, setType] = useState("");
 
-  const [inputParticipants, setparticipants] = useState(1);
+  const [inputParticipants, setparticipants] = useState("");
   const clearFields = () => {
     setparticipants("");
   };
@@ -27,14 +27,39 @@ export default function Favorites() {
   const [searchedFavorites, setSearchedFavorites] = useState([]);
 
   const filterActivities = () => {
-    setSearchedFavorites(favorites.filter(fav =>
-      fav.price >= contextValues.min / 10000 &&
-      fav.price <= contextValues.max / 10000)
-    )
+    if (activityType !== "" && inputParticipants !== "") {
+      setSearchedFavorites(favorites.filter(fav =>
+      (fav.price >= contextValues.min / 10000 &&
+        fav.price <= contextValues.max / 10000 &&
+        fav.type === activityType &&
+        String(fav.participants) === String(inputParticipants))
+      )
+      )
+    } else if (inputParticipants !== "") {
+      setSearchedFavorites(favorites.filter(fav =>
+      (fav.price >= contextValues.min / 10000 &&
+        fav.price <= contextValues.max / 10000 &&
+        String(fav.participants) === String(inputParticipants))
+      )
+      )
+    } else if (activityType !== "") {
+      setSearchedFavorites(favorites.filter(fav =>
+      (fav.price >= contextValues.min / 10000 &&
+        fav.price <= contextValues.max / 10000 &&
+        fav.type === activityType)
+      )
+      )
+    } else {
+      setSearchedFavorites(favorites.filter(fav =>
+      (fav.price >= contextValues.min / 10000 &&
+        fav.price <= contextValues.max / 10000)
+      )
+      )
+    }
   }
 
 
-  console.log(searchedFavorites, contextValues.min, contextValues.max)
+  console.log(inputParticipants)
 
   return favorites.length !== 0 ? (
     <div>
