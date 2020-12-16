@@ -2,10 +2,12 @@ import React, { useState, useContext } from 'react';
 import { FavoriteContext } from '../../contextComponents/FavoriteContext';
 import ActivityCardDetails from "../ActivityCardDetails";
 import FavoriteButton from "./searchComponents/FavoriteButton"
-import StyledActivityContainer from "../styledComponents/StyledActivityContainer"
+import StyledActivityContainerForFavorites from "../styledComponents/StyledActivityContainerForFavorites"
 import StyledSelectContainer from "../styledComponents/StyledSelectContainer";
 import StyledInputContainer from "../styledComponents/StyledInputContainer";
 import StyledGetButton from "../styledComponents/StyledGetButton";
+import StyledFavoriteContainer from "../styledComponents/StyledFavoriteContainer";
+import StyledFavoriteSearchContainer from "../styledComponents/StyledFavoriteSearchContainer";
 
 
 import SliderBar from "../slidebarComponents/Sliderbar";
@@ -79,8 +81,8 @@ export default function Favorites() {
 
 
   return favorites.length !== 0 ? (
-    <div>
-      <div>
+    <StyledFavoriteContainer>
+      <StyledFavoriteSearchContainer>
         <StyledSelectContainer>Activity types:
           <select className="option" onChange={e => setType(e.target.value)}>
             <option value="">all</option>
@@ -102,20 +104,20 @@ export default function Favorites() {
           />
         </StyledInputContainer>
 
-        <SliderBar />
+        <SliderBar className="slider" />
 
         <StyledGetButton style={{ margin: "0 auto" }} onClick={filterActivities}>
           Give me an activity!
         </StyledGetButton>
-      </div>
+      </StyledFavoriteSearchContainer>
 
       {currentPost.map((fav) => (
-        <StyledActivityContainer>
+        <StyledActivityContainerForFavorites>
           <React.Fragment>
             <FavoriteButton activity={fav} />
             <ActivityCardDetails activity={fav} />
           </React.Fragment>
-        </StyledActivityContainer>)
+        </StyledActivityContainerForFavorites>)
       )}
 
       {pageNumbers.length !== 0 ? (
@@ -128,11 +130,11 @@ export default function Favorites() {
         </div >
       ) : ("")}
 
-    </div>
+    </StyledFavoriteContainer>
   ) : (
-      <StyledActivityContainer>
+      <StyledActivityContainerForFavorites>
         <div style={{ margin: "auto" }}>There are no favorites yet! <br /><br />
           Start collecting activities...
         </div>
-      </StyledActivityContainer>)
+      </StyledActivityContainerForFavorites>)
 }
