@@ -13,6 +13,8 @@ import { SlideValueContext } from "../../contextComponents/SlideValueContext";
 
 
 export default function Favorites() {
+
+
   const [contextValues] = useContext(SlideValueContext);
   const [favorites] = useContext(FavoriteContext);
 
@@ -25,6 +27,22 @@ export default function Favorites() {
   };
 
   const [searchedFavorites, setSearchedFavorites] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setpostsPerPage] = useState(3);
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPost = searchedFavorites.slice(indexOfFirstPost, indexOfLastPost)
+
+  const pageNumbers = [];
+
+  for (let i = 1; i <= Math.ceil(searchedFavorites.length / postsPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber)
+  }
 
   const filterActivities = () => {
     if (activityType !== "" && inputParticipants !== "") {
@@ -59,7 +77,6 @@ export default function Favorites() {
   }
 
 
-  console.log(inputParticipants)
 
   return favorites.length !== 0 ? (
     <div>
@@ -87,12 +104,12 @@ export default function Favorites() {
 
         <SliderBar />
 
-        <StyledGetButton onClick={filterActivities}>
+        <StyledGetButton style={{ margin: "0 auto" }} onClick={filterActivities}>
           Give me an activity!
         </StyledGetButton>
       </div>
 
-      {searchedFavorites.map((fav) => (
+      {currentPost.map((fav) => (
         <StyledActivityContainer>
           <React.Fragment>
             <FavoriteButton activity={fav} />
@@ -100,6 +117,16 @@ export default function Favorites() {
           </React.Fragment>
         </StyledActivityContainer>)
       )}
+
+      {pageNumbers.length !== 0 ? (
+        <div className="pagination-container">
+          {pageNumbers.map(number => (
+            <div onClick={() => paginate(number)} href="#" className="page-link">
+              {number}
+            </div>
+          ))}
+        </div >
+      ) : ("")}
 
     </div>
   ) : (
