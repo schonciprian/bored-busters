@@ -17,7 +17,6 @@ export default function Header() {
       .then((response) => setActivityByType(response.data));
   };
 
-
   const { activity, type, participants, price } = activityByType;
 
   return activityByType.length !== 0 ? (
