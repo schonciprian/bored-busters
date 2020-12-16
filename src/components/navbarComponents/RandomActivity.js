@@ -11,6 +11,9 @@ export default function Header() {
   const [randomActivity, setrandomActivity] = useState([]);
   const [favorites, setFavorites] = useContext(FavoriteContext);
 
+  const isCollected = (array) =>
+    array.map((item) => item).includes(randomActivity);
+
 
   const addFavoriteActivity = () => {
 
@@ -18,7 +21,6 @@ export default function Header() {
     console.log(favorites);
 
   }
-
 
   const getRandomActivity = () => {
     axios
@@ -38,7 +40,9 @@ export default function Header() {
         Give me a random activity!
       </StyledGetButton>
       <StyledFavButton style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }} onClick={addFavoriteActivity}>
-        <div><FaHeart style={{ height: "40px", width: "40px" }} /></div>
+        {isCollected(favorites) ?
+          <div style={{ color: "red" }}><FaHeart style={{ height: "40px", width: "40px" }} /></div>
+          : <div><FaHeart style={{ height: "40px", width: "40px" }} /></div>}
       </StyledFavButton>
 
       <div>
