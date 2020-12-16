@@ -8,6 +8,7 @@ export default function Header() {
             <Link to="/">
                 Bored Busters
             </Link>
+            
         </StyledHeader>
     )
 }

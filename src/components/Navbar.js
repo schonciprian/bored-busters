@@ -12,6 +12,8 @@ export default function Header() {
             <Link to="/participants">Participants</Link>
             {''}|{''}
             <Link to="/cost">Cost</Link>
+            {''}|{''}
+            <Link to="/favorites">Favorites</Link>
         </StyledNavbar>
     )
 }
