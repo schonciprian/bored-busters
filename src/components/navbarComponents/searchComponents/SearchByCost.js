@@ -3,6 +3,8 @@ import axios from "axios";
 import SliderBar from "../../slidebarComponents/Sliderbar";
 import StyledGetButton from "../../styledComponents/StyledGetButton";
 import StyledActivityContainer from "../../styledComponents/StyledActivityContainer";
+import ActivityCardDetails from "../../ActivityCardDetails";
+
 
 import { SlideValueContext } from "../../../contextComponents/SlideValueContext";
 
@@ -40,8 +42,6 @@ export default function SearchByCost() {
       .then((response) => setActivityData(response.data));
   };
 
-  const { activity, type, participants, price, link } = activityData;
-
   return activityData.length !== 0 ? (
     <div style={searchCardStyle}>
       <p
@@ -64,29 +64,15 @@ export default function SearchByCost() {
           Give me an activity!
         </StyledGetButton>
       </div>
-      {activity ? (
-        <StyledActivityContainer style={{ width: "800px" }}>
-          <div>
-            <div style={{ fontSize: "35px", height: "100px" }}>{activity}</div>
 
-            <div>Type: {type}</div>
+      <StyledActivityContainer style={{ width: "800px" }}>
+        {activityData.activity ? (
+          <ActivityCardDetails activity={activityData} />
+        ) : (
+            <div>No activity was found!</div>
+          )}
+      </StyledActivityContainer>
 
-            {link ? (
-              <div>
-                Visit: <a href={link}> {link}</a>
-              </div>
-            ) : (
-                ""
-              )}
-
-            <div>Number of participants:{participants}</div>
-
-            <div>Price: {price * 10000}</div>
-          </div>
-        </StyledActivityContainer>
-      ) : (
-          <div>No activity was found!</div>
-        )}
     </div>
   ) : (
       <div style={searchCardStyle}>

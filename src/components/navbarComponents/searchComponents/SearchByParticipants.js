@@ -3,6 +3,8 @@ import axios from "axios";
 import StyledGetButton from "../../styledComponents/StyledGetButton";
 import StyledActivityContainer from "../../styledComponents/StyledActivityContainer";
 import StyledInputContainer from "../../styledComponents/StyledInputContainer";
+import ActivityCardDetails from "../../ActivityCardDetails";
+
 
 export default function SearchByParticipants() {
   const [participantsActivity, setparticipantsActivity] = useState([]);
@@ -19,8 +21,6 @@ export default function SearchByParticipants() {
   const clearFields = () => {
     setparticipants("");
   };
-
-  const { activity, type, participants, price } = participantsActivity;
 
   return participantsActivity.length !== 0 ? (
     <StyledActivityContainer>
@@ -44,34 +44,11 @@ export default function SearchByParticipants() {
       </StyledGetButton>
 
       {participantsActivity.activity ? (
-        <div>
-          <div style={{ fontSize: "35px", height: "100px" }}>{activity}</div>
-
-          <div>Type: {type}</div>
-
-          {participantsActivity.link ? (
-            <div>
-              Visit:{" "}
-              <a
-                href={participantsActivity.link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {" "}
-                {participantsActivity.link}
-              </a>{" "}
-            </div>
-          ) : (
-              ""
-            )}
-
-          <div>Number of participants:{participants}</div>
-
-          <div>Price: {price * 10000}</div>
-        </div>
+        <ActivityCardDetails activity={participantsActivity} />
       ) : (
           <div style={{ margin: "20px auto" }}>No activity was found!</div>
         )}
+
     </StyledActivityContainer>
   ) : (
       <StyledActivityContainer>

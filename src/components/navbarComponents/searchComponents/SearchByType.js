@@ -3,6 +3,7 @@ import axios from "axios";
 import StyledGetButton from "../../styledComponents/StyledGetButton";
 import StyledActivityContainer from "../../styledComponents/StyledActivityContainer";
 import StyledSelectContainer from "../../styledComponents/StyledSelectContainer";
+import ActivityCardDetails from "../../ActivityCardDetails";
 
 
 export default function SearchByType() {
@@ -17,8 +18,6 @@ export default function SearchByType() {
       .then((response) => setActivityByType(response.data));
   };
 
-  const { activity, type, participants, price } = activityByType;
-
   return activityByType.length !== 0 ? (
     <StyledActivityContainer>
       <StyledSelectContainer>Activity types:
@@ -31,17 +30,9 @@ export default function SearchByType() {
       <StyledGetButton style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }} onClick={getActivityByType}>
         Give me an activity!
       </StyledGetButton>
-      {activityByType.activity ? (<div>
-        <div style={{ fontSize: "35px", height: "100px" }}>{activity}</div>
-        <div>Type: {type}</div>
-        {activityByType.link ? (
-          <div>
-            Visit: <a href={activityByType.link} target="_blank" rel="noopener noreferrer"> {activityByType.link}</a>{" "}
-          </div>
-        ) : ("")}
-        <div>Number of participants:{participants}</div>
-        <div>Price: {price * 10000}</div>
-      </div>) : (<div>"No activity was found!"</div>)}
+
+      {activityByType.activity ? (<ActivityCardDetails activity={activityByType} />) : (<div>No activity was found!</div>)}
+
     </StyledActivityContainer>
   ) : (
       <StyledActivityContainer>
