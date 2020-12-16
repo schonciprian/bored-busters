@@ -4,6 +4,8 @@ import SliderBar from "../../slidebarComponents/Sliderbar";
 import StyledGetButton from "../../styledComponents/StyledGetButton";
 import StyledActivityContainer from "../../styledComponents/StyledActivityContainer";
 import ActivityCardDetails from "../../ActivityCardDetails";
+import FavoriteButton from "./FavoriteButton"
+
 
 
 import { SlideValueContext } from "../../../contextComponents/SlideValueContext";
@@ -67,7 +69,10 @@ export default function SearchByCost() {
 
       <StyledActivityContainer style={{ width: "800px" }}>
         {activityData.activity ? (
-          <ActivityCardDetails activity={activityData} />
+          <React.Fragment>
+            <FavoriteButton activity={activityData} />
+            <ActivityCardDetails activity={activityData} />
+          </React.Fragment>
         ) : (
             <div>No activity was found!</div>
           )}

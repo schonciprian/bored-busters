@@ -4,6 +4,8 @@ import StyledGetButton from "../../styledComponents/StyledGetButton";
 import StyledActivityContainer from "../../styledComponents/StyledActivityContainer";
 import StyledSelectContainer from "../../styledComponents/StyledSelectContainer";
 import ActivityCardDetails from "../../ActivityCardDetails";
+import FavoriteButton from "./FavoriteButton"
+
 
 
 export default function SearchByType() {
@@ -31,7 +33,12 @@ export default function SearchByType() {
         Give me an activity!
       </StyledGetButton>
 
-      {activityByType.activity ? (<ActivityCardDetails activity={activityByType} />) : (<div>No activity was found!</div>)}
+      {activityByType.activity ? (
+        <React.Fragment>
+          <FavoriteButton activity={activityByType} />
+          <ActivityCardDetails activity={activityByType} />
+        </React.Fragment>
+      ) : (<div>No activity was found!</div>)}
 
     </StyledActivityContainer>
   ) : (
