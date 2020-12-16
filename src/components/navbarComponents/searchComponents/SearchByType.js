@@ -12,7 +12,7 @@ export default function SearchByType() {
   const types = ["education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork"]
 
   const [activityByType, setActivityByType] = useState([]);
-  const [activityType, setType] = useState([]);
+  const [activityType, setType] = useState("");
 
   const getActivityByType = () => {
     axios
@@ -24,6 +24,7 @@ export default function SearchByType() {
     <StyledActivityContainer>
       <StyledSelectContainer>Activity types:
           <select className="option" onChange={e => setType(e.target.value)}>
+          <option value="">all</option>
           {types.map((type) => (
             <option value={type}>{type}</option>
           ))}
@@ -45,6 +46,7 @@ export default function SearchByType() {
       <StyledActivityContainer>
         <StyledSelectContainer>Activity types:
           <select className="option" onChange={e => setType(e.target.value)} >
+            <option value="">all</option>
             {types.map((type) => (
               <option value={type}>{type}</option>
             ))}
