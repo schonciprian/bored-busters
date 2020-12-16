@@ -38,6 +38,7 @@ export default styled.div`
 
     .details {
       width: 600px;
+      min-height: 375px;
       color: #111111;
       background-color: #6679AE;
       border-radius: 20px;
