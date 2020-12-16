@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import StyledGetRandomButton from "./styledComponents/StyledGetRandomButton";
+import StyledGetButton from "./styledComponents/StyledGetButton";
 import StyledActivityContainer from "./styledComponents/StyledActivityContainer";
 import StyledSelectContainer from "./styledComponents/StyledSelectContainer";
 
@@ -28,9 +28,9 @@ export default function Header() {
           ))}
         </select>
       </StyledSelectContainer>
-      <StyledGetRandomButton style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }} onClick={getActivityByType}>
+      <StyledGetButton style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }} onClick={getActivityByType}>
         Give me an activity!
-      </StyledGetRandomButton>
+      </StyledGetButton>
       {activityByType.activity ? (<div>
         <div style={{ fontSize: "35px", height: "100px" }}>{activity}</div>
         <div>Type: {type}</div>
@@ -52,9 +52,9 @@ export default function Header() {
             ))}
           </select>
         </StyledSelectContainer>
-        <StyledGetRandomButton style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }} onClick={getActivityByType}>
+        <StyledGetButton style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }} onClick={getActivityByType}>
           Give me an activity!
-        </StyledGetRandomButton>
+        </StyledGetButton>
       </StyledActivityContainer>
     );
 }
