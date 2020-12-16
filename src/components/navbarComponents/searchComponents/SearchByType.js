@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-import StyledGetButton from "./styledComponents/StyledGetButton";
-import StyledActivityContainer from "./styledComponents/StyledActivityContainer";
-import StyledSelectContainer from "./styledComponents/StyledSelectContainer";
+import StyledGetButton from "../../styledComponents/StyledGetButton";
+import StyledActivityContainer from "../../styledComponents/StyledActivityContainer";
+import StyledSelectContainer from "../../styledComponents/StyledSelectContainer";
 
 
-export default function Header() {
+export default function SearchByType() {
   const types = ["education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork"]
 
   const [activityByType, setActivityByType] = useState([]);

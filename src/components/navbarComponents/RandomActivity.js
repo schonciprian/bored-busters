@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
-import StyledGetButton from "./styledComponents/StyledGetButton";
-import StyledActivityContainer from "./styledComponents/StyledActivityContainer";
-import { FavoriteContext } from '../contexts/FavoriteContext';
+import StyledGetButton from "../styledComponents/StyledGetButton";
+import StyledActivityContainer from "../styledComponents/StyledActivityContainer";
+import { FavoriteContext } from '../../contextComponents/FavoriteContext';
 import { FaHeart } from 'react-icons/fa';
-import StyledFavButton from './styledComponents/StyledFavButton';
+import StyledFavButton from '../styledComponents/StyledFavButton';
 
 
 export default function Header() {

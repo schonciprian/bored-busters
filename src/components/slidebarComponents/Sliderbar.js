@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Slider, Rail, Handles, Tracks, Ticks } from "react-compound-slider";
-import { SliderRail, Handle, Track, Tick } from "./SlideBarComponents";
-import { SlideValueContext } from "../contextComponents/SlideValueContext";
+import { SliderRail, Handle, Track, Tick } from "./SlidebarElements";
+import { SlideValueContext } from "../../contextComponents/SlideValueContext";
 
 const SearchByCost = () => {
   const [contextValues, setContextValues] = useContext(SlideValueContext);

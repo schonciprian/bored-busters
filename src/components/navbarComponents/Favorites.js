@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { FavoriteContext } from '../contextComponents/FavoriteContext';
-import StyledFavCards from './styledComponents/StyledFavCards';
+import { FavoriteContext } from '../../contextComponents/FavoriteContext';
+import StyledFavCards from '../styledComponents/StyledFavCards';
 import { FaHeart } from 'react-icons/fa';
-import StyledFavButton from './styledComponents/StyledFavButton';
+import StyledFavButton from '../styledComponents/StyledFavButton';
 
 export default function Favorites() {
 

@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
-import SliderBar from "./SliderBar";
-import StyledGetButton from "./styledComponents/StyledGetButton";
-import StyledActivityContainer from "./styledComponents/StyledActivityContainer";
+import SliderBar from "../../slidebarComponents/Sliderbar";
+import StyledGetButton from "../../styledComponents/StyledGetButton";
+import StyledActivityContainer from "../../styledComponents/StyledActivityContainer";
 
-import { SlideValueContext } from "../contextComponents/SlideValueContext";
+import { SlideValueContext } from "../../../contextComponents/SlideValueContext";
 
 export default function SearchByCost() {
   const [contextValues] = useContext(SlideValueContext);
@@ -76,8 +76,8 @@ export default function SearchByCost() {
                 Visit: <a href={link}> {link}</a>
               </div>
             ) : (
-              ""
-            )}
+                ""
+              )}
 
             <div>Number of participants:{participants}</div>
 
@@ -85,31 +85,31 @@ export default function SearchByCost() {
           </div>
         </StyledActivityContainer>
       ) : (
-        <div>No activity was found!</div>
-      )}
+          <div>No activity was found!</div>
+        )}
     </div>
   ) : (
-    <div style={searchCardStyle}>
-      <p
-        style={{
-          textAlign: "center",
-          fontFamily: "Mountains of Christmas",
-          fontSize: "30px",
-          fontWeight: "900",
-          letterSpacing: "7px",
-          color: "#72CD55",
-        }}
-      >
-        Select your price range!
+      <div style={searchCardStyle}>
+        <p
+          style={{
+            textAlign: "center",
+            fontFamily: "Mountains of Christmas",
+            fontSize: "30px",
+            fontWeight: "900",
+            letterSpacing: "7px",
+            color: "#72CD55",
+          }}
+        >
+          Select your price range!
       </p>
-      <div style={searchCardStyle2}>
-        <SliderBar />
-      </div>
-      <div style={searchBoxStyle}>
-        <StyledGetButton onClick={getActivity}>
-          Give me an activity!
+        <div style={searchCardStyle2}>
+          <SliderBar />
+        </div>
+        <div style={searchBoxStyle}>
+          <StyledGetButton onClick={getActivity}>
+            Give me an activity!
         </StyledGetButton>
+        </div>
       </div>
-    </div>
-  );
+    );
 }

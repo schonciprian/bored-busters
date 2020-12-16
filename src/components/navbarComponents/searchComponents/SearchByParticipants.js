@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import StyledGetButton from "./styledComponents/StyledGetButton";
-import StyledActivityContainer from "./styledComponents/StyledActivityContainer";
-import StyledInputContainer from "./styledComponents/StyledInputContainer";
+import StyledGetButton from "../../styledComponents/StyledGetButton";
+import StyledActivityContainer from "../../styledComponents/StyledActivityContainer";
+import StyledInputContainer from "../../styledComponents/StyledInputContainer";
 
 export default function SearchByParticipants() {
   const [participantsActivity, setparticipantsActivity] = useState([]);
@@ -25,7 +25,7 @@ export default function SearchByParticipants() {
   return participantsActivity.length !== 0 ? (
     <StyledActivityContainer>
       <StyledInputContainer>
-        Participants number:
+        Number of participants:
         <input
           className="input"
           type="text"
@@ -62,37 +62,37 @@ export default function SearchByParticipants() {
               </a>{" "}
             </div>
           ) : (
-            ""
-          )}
+              ""
+            )}
 
           <div>Number of participants:{participants}</div>
 
           <div>Price: {price * 10000}</div>
         </div>
       ) : (
-        <div style={{ margin: "20px auto" }}>No activity was found!</div>
-      )}
+          <div style={{ margin: "20px auto" }}>No activity was found!</div>
+        )}
     </StyledActivityContainer>
   ) : (
-    <StyledActivityContainer>
-      <StyledInputContainer>
-        Participants number:
+      <StyledActivityContainer>
+        <StyledInputContainer>
+          Number of participants:
         <input
-          className="input"
-          type="text"
-          value={inputParticipants}
-          placeholder={inputParticipants}
-          onChange={(e) => setparticipants(e.target.value)}
-          onFocus={clearFields}
-        />
-      </StyledInputContainer>
+            className="input"
+            type="text"
+            value={inputParticipants}
+            placeholder={inputParticipants}
+            onChange={(e) => setparticipants(e.target.value)}
+            onFocus={clearFields}
+          />
+        </StyledInputContainer>
 
-      <StyledGetButton
-        style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }}
-        onClick={getParticipantsActivity}
-      >
-        Give me the activity!
+        <StyledGetButton
+          style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }}
+          onClick={getParticipantsActivity}
+        >
+          Give me the activity!
       </StyledGetButton>
-    </StyledActivityContainer>
-  );
+      </StyledActivityContainer>
+    );
 }
