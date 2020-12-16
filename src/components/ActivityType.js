@@ -23,7 +23,9 @@ export default function Header() {
     <StyledActivityContainer>
       <StyledSelectContainer>Activity types:
           <select className="option" onChange={e => setType(e.target.value)}>
-          <option value={type}>{type}</option>
+          {types.map((type) => (
+            <option value={type}>{type}</option>
+          ))}
         </select>
       </StyledSelectContainer>
       <StyledGetRandomButton style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }} onClick={getActivityByType}>
@@ -44,7 +46,7 @@ export default function Header() {
   ) : (
       <StyledActivityContainer>
         <StyledSelectContainer>Activity types:
-        <select className="option" onChange={e => setType(e.target.value)}>
+          <select className="option" onChange={e => setType(e.target.value)} >
             {types.map((type) => (
               <option value={type}>{type}</option>
             ))}
