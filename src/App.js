@@ -27,10 +27,11 @@ function App() {
           <div className="container">
             <Route exact path="/" component={Home}></Route>
             <Route path="/random" component={RandomActivity}></Route>
-            <Route path="/favorites" component={Favorites}></Route>
+
             <Route path="/type" component={SearchByType}></Route>
             <SlideValueContextProvider>
               <Route path="/cost" component={SearchByCost}></Route>
+              <Route path="/favorites" component={Favorites}></Route>
             </SlideValueContextProvider>
             <Route path="/participants" component={SearchByParticipants}></Route>
           </div>
