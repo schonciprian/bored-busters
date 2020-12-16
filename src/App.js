@@ -1,4 +1,5 @@
 import "./App.css";
+import "./Snowflake.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
@@ -7,10 +8,10 @@ import RandomActivity from "./components/RandomActivity";
 import SearchByCost from "./components/SearchByCost";
 import SearchByParticipants from "./components/SearchByParticipants";
 import { SlideValueContextProvider } from "./contextComponents/SlideValueContext";
+import SnowFlakes from "./components/SnowFlakes";
 import ActivityType from './components/ActivityType';
 import { FavoriteProvider } from './contexts/FavoriteContext';
 import Favorites from './components/Favorites';
-
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
     <Router>
       <FavoriteProvider>
       <div className="App">
+        <SnowFlakes />
         <Header />
         <Navbar />
         <div className="container">
