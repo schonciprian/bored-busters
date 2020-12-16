@@ -5,19 +5,20 @@ export default function ActivityCardDetails(props) {
 
     return (
         <div>
+
             <div style={{ fontSize: "35px", height: "100px" }}>{activity}</div>
 
             <div>Type: {type}</div>
 
-            {link ? (
-                <div>
-                    Visit: <a href={link} target="_blank" rel="noopener noreferrer"> {link}</a>{" "}
-                </div>
-            ) : ("")}
-
             <div>Number of participants:{participants}</div>
 
-            <div>Price: {price * 10000}</div>
-        </div>
+            <div> Price: {price * 10000}</div>
+
+            {link ? (
+                <div>
+                    <a href={link} target="_blank" rel="noopener noreferrer">Click here for more information</a>{" "}
+                </div>
+            ) : ("")}
+        </div >
     )
 }
