@@ -42,7 +42,7 @@ body {
   overflow: hidden;
   position: absolute;
   z-index: 1;
-  margin: -60px 0 0 0;
+  margin: -100px 0 0 0;
   padding: 0;
   pointer-events: none;
   width: 100%;

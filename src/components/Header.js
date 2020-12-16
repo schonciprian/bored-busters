@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 export default function Header() {
     return (
         <StyledHeader>
-            <ul class="lightrope">
+            <ul className="lightrope">
                 <li></li>
                 <li></li>
                 <li></li>
@@ -52,7 +52,7 @@ export default function Header() {
             <Link to="/">
                 Bored Busters
             </Link>
-            
+
         </StyledHeader>
     )
 }
