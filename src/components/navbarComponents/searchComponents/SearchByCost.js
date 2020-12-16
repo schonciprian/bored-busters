@@ -22,10 +22,7 @@ export default function SearchByCost() {
 
   const searchCardStyle2 = {
     display: "flex",
-    flexDirection: "column",
-    position: "relative",
-    top: "30px",
-    left: "145px",
+    flexDirection: "column"
   };
 
   const searchBoxStyle = {
