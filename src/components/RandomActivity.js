@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
-import StyledGetRandomButton from "./styledComponents/StyledGetRandomButton";
+import StyledGetButton from "./styledComponents/StyledGetButton";
 import StyledActivityContainer from "./styledComponents/StyledActivityContainer";
 import {FavoriteContext} from '../contexts/FavoriteContext';
 import { FaHeart } from 'react-icons/fa';
@@ -31,9 +31,12 @@ export default function Header() {
 
   return randomActivity.length !== 0 ? (
     <StyledActivityContainer>
-      <StyledGetRandomButton style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }} onClick={getRandomActivity}>
+      <StyledGetButton
+        style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }}
+        onClick={getRandomActivity}
+      
         Give me a random activity!
-      </StyledGetRandomButton> 
+      </StyledGetButton> 
       <StyledFavButton style = {{ marginRight: "auto", marginLeft: "auto", minHeight: "50px"}} onClick={addFavoriteActivity}>
         <div><FaHeart style={{height: "80px", width: "80px"}}/></div>
       </StyledFavButton>
@@ -45,9 +48,11 @@ export default function Header() {
 
         {randomActivity.link ? (
           <div>
-            Visit: <a href={randomActivity.link}> {randomActivity.link}</a>{" "}
+            Visit: <a href={randomActivity.link} target="_blank" rel="noopener noreferrer"> {randomActivity.link}</a>{" "}
           </div>
-        ) : ("")}
+        ) : (
+          ""
+        )}
 
         <div>Number of participants:{participants}</div>
 
@@ -57,10 +62,13 @@ export default function Header() {
         
     </StyledActivityContainer>
   ) : (
-      <StyledActivityContainer>
-        <StyledGetRandomButton style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }} onClick={getRandomActivity}>
-          Give me a random activity!
-        </StyledGetRandomButton>
-      </StyledActivityContainer>
-    );
+    <StyledActivityContainer>
+      <StyledGetButton
+        style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }}
+        onClick={getRandomActivity}
+      >
+        Give me a random activity!
+      </StyledGetButton>
+    </StyledActivityContainer>
+  );
 }
