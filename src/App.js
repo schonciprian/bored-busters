@@ -7,6 +7,8 @@ import RandomActivity from "./components/RandomActivity";
 import SearchByCost from "./components/SearchByCost";
 import SearchByParticipants from "./components/SearchByParticipants";
 import { SlideValueContextProvider } from "./contextComponents/SlideValueContext";
+import ActivityType from './components/ActivityType';
+
 
 function App() {
   return (
@@ -14,14 +16,16 @@ function App() {
       <div className="App">
         <Header />
         <Navbar />
-
         <div className="container">
           <Route exact path="/" component={Home}></Route>
           <Route path="/random" component={RandomActivity}></Route>
+          <Route path="/type" component={ActivityType}></Route>
+
           <SlideValueContextProvider>
             <Route path="/cost" component={SearchByCost}></Route>
           </SlideValueContextProvider>
           <Route path="/participants" component={SearchByParticipants}></Route>
+
         </div>
       </div>
     </Router>
