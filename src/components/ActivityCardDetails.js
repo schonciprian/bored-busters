@@ -4,9 +4,9 @@ export default function ActivityCardDetails(props) {
     const { activity, type, participants, price, link } = props.activity;
 
     return (
-        <div>
+        <div className="details">
 
-            <div style={{ fontSize: "35px", height: "100px" }}>{activity}</div>
+            <div style={{ fontSize: "35px", height: "100px", textAlign: "center" }}>{activity}</div>
 
             <div>Type: {type}</div>
 
