@@ -11,7 +11,7 @@ const SearchByCost = () => {
   };
 
   const [domain] = useState([0, 10000]);
-  const [values, setValues] = useState([0, 5000]);
+  const [values, setValues] = useState([1000, 5000]);
   const reversed = false;
 
   const onChange = (values) => {
