@@ -38,7 +38,7 @@ export default function Header() {
         Give me a random activity!
       </StyledGetButton>
       <StyledFavButton style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }} onClick={addFavoriteActivity}>
-        <div><FaHeart style={{ height: "80px", width: "80px" }} /></div>
+        <div><FaHeart style={{ height: "40px", width: "40px" }} /></div>
       </StyledFavButton>
 
       <div>

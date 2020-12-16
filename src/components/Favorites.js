@@ -1,7 +1,7 @@
 import React,{useContext} from 'react';
 import {FavoriteContext} from '../contexts/FavoriteContext';
 import StyledFavCards from './styledComponents/StyledFavCards';
-import { FaHeartBroken } from 'react-icons/fa';
+import { FaHeart } from 'react-icons/fa';
 import StyledFavButton from './styledComponents/StyledFavButton';
 
 export default function Favorites() {
@@ -25,8 +25,9 @@ export default function Favorites() {
       <div>Number of participants:{fav.participants}</div>
 
       <div>Price: {fav.price * 10000}</div>
+
       <StyledFavButton style = {{ marginRight: "auto", marginLeft: "auto", minHeight: "50px"}} >
-        <div><FaHeartBroken style={{height: "40px", width: "40px"}}/></div>
+        <div><FaHeart style={{height: "40px", width: "40px"}}/></div>
       </StyledFavButton>
     </StyledFavCards>
       

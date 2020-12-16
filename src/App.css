@@ -10,6 +10,8 @@ body {
 
 .container {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
@@ -22,10 +24,11 @@ body {
     font-size: 20px;
     font-weight: 900;
     letter-spacing: 7px;
-    text-align: justify;
+    text-align: center;
 
     color: #F7B900;
 }
+
 
 @media (max-width: 640px) {
     .welcome {

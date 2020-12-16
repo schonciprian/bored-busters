@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export default styled.div`
-    width: auto;
+    width: 600px;
     min-height: 100px;
     margin: 20px;
 
@@ -10,6 +10,7 @@ export default styled.div`
     font-weight: 900;
     letter-spacing: 7px;
 
+    display: flex;
     flex-basis: auto;
     flex-direction: column;
     
