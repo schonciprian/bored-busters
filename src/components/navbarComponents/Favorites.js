@@ -30,9 +30,9 @@ export default function Favorites() {
 
   const [searchedFavorites, setSearchedFavorites] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setpostsPerPage] = useState(3);
+  const [postsPerPage, setpostsPerPage] = useState(4);
 
-  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfLastPost = currentPage * postsPerPage - 4;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPost = searchedFavorites.slice(indexOfFirstPost, indexOfLastPost)
 
@@ -78,8 +78,6 @@ export default function Favorites() {
     }
   }
 
-
-
   return favorites.length !== 0 ? (
     <StyledFavoriteContainer>
       <StyledFavoriteSearchContainer>
@@ -106,7 +104,7 @@ export default function Favorites() {
 
         <SliderBar className="slider" />
 
-        <StyledGetButton style={{ margin: "0 auto" }} onClick={filterActivities}>
+        <StyledGetButton style={{ margin: "5px auto" }} onClick={filterActivities}>
           Give me an activity!
         </StyledGetButton>
       </StyledFavoriteSearchContainer>
@@ -120,7 +118,7 @@ export default function Favorites() {
         </StyledActivityContainerForFavorites>)
       )}
 
-      {pageNumbers.length !== 0 ? (
+      {searchedFavorites.length !== 0 ? (
         <div className="pagination-container">
           {pageNumbers.map(number => (
             <div onClick={() => paginate(number)} href="#" className="page-link">
