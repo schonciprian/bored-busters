@@ -29,21 +29,39 @@ export default function Favorites() {
   };
 
   const [searchedFavorites, setSearchedFavorites] = useState([]);
+  const [postsPerPage] = useState(4);
+
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setpostsPerPage] = useState(4);
+  const [currentPageOriginals, setCurrentPageOriginals] = useState(1);
 
   const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfLastPostOriginals = currentPageOriginals * postsPerPage;
+
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const indexOfFirstPostOriginals = indexOfLastPostOriginals - postsPerPage;
+
   const currentPost = searchedFavorites.slice(indexOfFirstPost, indexOfLastPost)
+  const originalCurrentPost = favorites.slice(indexOfFirstPostOriginals, indexOfLastPostOriginals)
+
+  const [isFiltered, setIfFiltered] = useState(false);
 
   const pageNumbers = [];
+  const originalPageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(searchedFavorites.length / postsPerPage); i++) {
     pageNumbers.push(i);
   }
 
+  for (let i = 1; i <= Math.ceil(favorites.length / postsPerPage); i++) {
+    originalPageNumbers.push(i);
+  }
+
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber)
+  }
+
+  const paginateOriginals = (pageNumber) => {
+    setCurrentPageOriginals(pageNumber)
   }
 
   const filterActivities = () => {
@@ -76,12 +94,13 @@ export default function Favorites() {
       )
       )
     }
+    setIfFiltered(true);
   }
   if (currentPost.length === 0 && currentPage > 1) {
     setCurrentPage(currentPage - 1);
   }
 
-  // console.log(indexOfFirstPost, indexOfFirstPost, currentPost)
+  console.log(indexOfFirstPostOriginals, indexOfLastPostOriginals, originalCurrentPost, originalPageNumbers)
 
   return favorites.length !== 0 ? (
     <StyledFavoriteContainer>
@@ -127,6 +146,27 @@ export default function Favorites() {
         <div className="pagination-container">
           {pageNumbers.map(number => (
             <div onClick={() => paginate(number)} href="#" className="page-link">
+              {number}
+            </div>
+          ))}
+        </div >
+      ) : ("")}
+
+
+
+      {!isFiltered ? originalCurrentPost.map((fav) => (
+        <StyledActivityContainerForFavorites>
+          <React.Fragment>
+            <FavoriteButton activity={fav} setSearchedFavorites={setSearchedFavorites} />
+            <ActivityCardDetails activity={fav} />
+          </React.Fragment>
+        </StyledActivityContainerForFavorites>)
+      ) : ("")}
+
+      {!isFiltered ? (
+        <div className="pagination-container">
+          {originalPageNumbers.map(number => (
+            <div onClick={() => paginateOriginals(number)} href="#" className="page-link">
               {number}
             </div>
           ))}
