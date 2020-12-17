@@ -22,7 +22,7 @@ export default styled.div`
     color: #72CD55;
 
     div {
-        margin: 25px 15px 10px 15px;
+        margin: 25px 15px 25px 15px;
     }
 
     a {
