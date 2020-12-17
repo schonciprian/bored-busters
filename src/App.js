@@ -9,11 +9,9 @@ import { SlideValueContextProvider } from "./contextComponents/SlideValueContext
 import SnowFlakes from "./components/SnowFlakes";
 import { FavoriteProvider } from './contextComponents/FavoriteContext';
 import Favorites from './components/navbarComponents/Favorites';
-
 import SearchByCost from "./components/navbarComponents/searchComponents/SearchByCost";
 import SearchByType from './components/navbarComponents/searchComponents/SearchByType';
 import SearchByParticipants from "./components/navbarComponents/searchComponents/SearchByParticipants";
-
 
 
 function App() {
@@ -27,7 +25,6 @@ function App() {
           <div className="container">
             <Route exact path="/" component={Home}></Route>
             <Route path="/random" component={RandomActivity}></Route>
-
             <Route path="/type" component={SearchByType}></Route>
             <SlideValueContextProvider>
               <Route path="/cost" component={SearchByCost}></Route>
