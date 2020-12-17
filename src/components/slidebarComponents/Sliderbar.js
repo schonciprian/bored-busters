@@ -11,7 +11,7 @@ const SearchByCost = () => {
   };
 
   const [domain] = useState([0, 10000]);
-  const [values, setValues] = useState([1000, 5000]);
+  const [values, setValues] = useState([0, 10000]);
   const reversed = false;
 
   const onChange = (values) => {
@@ -20,7 +20,7 @@ const SearchByCost = () => {
   };
 
   return (
-    <div style={{ height: 150, width: "100%" }}>
+    <div style={{ height: 50, width: "100%", display: "flex", justifyContent: "center", alignItems: "flex-start" }}>
       <Slider
         mode={2}
         step={1000}

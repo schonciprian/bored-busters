@@ -2,10 +2,12 @@ import React, { useState, useContext } from 'react';
 import { FavoriteContext } from '../../contextComponents/FavoriteContext';
 import ActivityCardDetails from "../ActivityCardDetails";
 import FavoriteButton from "./searchComponents/FavoriteButton"
-import StyledActivityContainer from "../styledComponents/StyledActivityContainer"
+import StyledActivityContainerForFavorites from "../styledComponents/StyledActivityContainerForFavorites"
 import StyledSelectContainer from "../styledComponents/StyledSelectContainer";
 import StyledInputContainer from "../styledComponents/StyledInputContainer";
 import StyledGetButton from "../styledComponents/StyledGetButton";
+import StyledFavoriteContainer from "../styledComponents/StyledFavoriteContainer";
+import StyledFavoriteSearchContainer from "../styledComponents/StyledFavoriteSearchContainer";
 
 
 import SliderBar from "../slidebarComponents/Sliderbar";
@@ -13,8 +15,10 @@ import { SlideValueContext } from "../../contextComponents/SlideValueContext";
 
 
 export default function Favorites() {
+
+
   const [contextValues] = useContext(SlideValueContext);
-  const [favorites] = useContext(FavoriteContext);
+  const [favorites, setFavorites] = useContext(FavoriteContext);
 
   const types = ["education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork"]
   const [activityType, setType] = useState("");
@@ -25,6 +29,40 @@ export default function Favorites() {
   };
 
   const [searchedFavorites, setSearchedFavorites] = useState([]);
+  const [postsPerPage] = useState(4);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPageOriginals, setCurrentPageOriginals] = useState(1);
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfLastPostOriginals = currentPageOriginals * postsPerPage;
+
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const indexOfFirstPostOriginals = indexOfLastPostOriginals - postsPerPage;
+
+  const currentPost = searchedFavorites.slice(indexOfFirstPost, indexOfLastPost)
+  const originalCurrentPost = favorites.slice(indexOfFirstPostOriginals, indexOfLastPostOriginals)
+
+  const [isFiltered, setIfFiltered] = useState(false);
+
+  const pageNumbers = [];
+  const originalPageNumbers = [];
+
+  for (let i = 1; i <= Math.ceil(searchedFavorites.length / postsPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
+  for (let i = 1; i <= Math.ceil(favorites.length / postsPerPage); i++) {
+    originalPageNumbers.push(i);
+  }
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber)
+  }
+
+  const paginateOriginals = (pageNumber) => {
+    setCurrentPageOriginals(pageNumber)
+  }
 
   const filterActivities = () => {
     if (activityType !== "" && inputParticipants !== "") {
@@ -56,14 +94,16 @@ export default function Favorites() {
       )
       )
     }
+    setIfFiltered(true);
+  }
+  if (currentPost.length === 0 && currentPage > 1) {
+    setCurrentPage(currentPage - 1);
   }
 
 
-  console.log(inputParticipants)
-
   return favorites.length !== 0 ? (
-    <div>
-      <div>
+    <StyledFavoriteContainer>
+      <StyledFavoriteSearchContainer>
         <StyledSelectContainer>Activity types:
           <select className="option" onChange={e => setType(e.target.value)}>
             <option value="">all</option>
@@ -85,27 +125,64 @@ export default function Favorites() {
           />
         </StyledInputContainer>
 
-        <SliderBar />
+        <SliderBar className="slider" />
 
-        <StyledGetButton onClick={filterActivities}>
+        <StyledGetButton style={{ margin: "5px auto" }} onClick={filterActivities}>
           Give me an activity!
         </StyledGetButton>
-      </div>
 
-      {searchedFavorites.map((fav) => (
-        <StyledActivityContainer>
+        {searchedFavorites.length === 0 && isFiltered ? (<div className="no-result">No results were found</div>) : ("")};
+
+      </StyledFavoriteSearchContainer>
+
+      {currentPost.map((fav) => (
+        <StyledActivityContainerForFavorites>
           <React.Fragment>
-            <FavoriteButton activity={fav} />
+            <FavoriteButton activity={fav} setSearchedFavorites={setSearchedFavorites} />
             <ActivityCardDetails activity={fav} />
           </React.Fragment>
-        </StyledActivityContainer>)
+        </StyledActivityContainerForFavorites>)
       )}
 
-    </div>
+      {searchedFavorites.length !== 0 ? (
+        <div className="pagination-container">
+          {pageNumbers.map(number => (
+            <div onClick={() => paginate(number)} href="#" className="page-link">
+              {number}
+            </div>
+          ))}
+        </div >
+      ) : ("")}
+
+
+
+      {!isFiltered ? originalCurrentPost.map((fav) => (
+        <StyledActivityContainerForFavorites>
+          <React.Fragment>
+            <FavoriteButton activity={fav}
+              setFavorites={setFavorites}
+              setCurrentPageOriginals={setCurrentPageOriginals}
+              currentPageOriginals={currentPageOriginals} />
+            <ActivityCardDetails activity={fav} />
+          </React.Fragment>
+        </StyledActivityContainerForFavorites>)
+      ) : ("")}
+
+      {!isFiltered ? (
+        <div className="pagination-container">
+          {originalPageNumbers.map(number => (
+            <div onClick={() => paginateOriginals(number)} href="#" className="page-link">
+              {number}
+            </div>
+          ))}
+        </div >
+      ) : ("")}
+
+    </StyledFavoriteContainer>
   ) : (
-      <StyledActivityContainer>
+      <StyledActivityContainerForFavorites>
         <div style={{ margin: "auto" }}>There are no favorites yet! <br /><br />
           Start collecting activities...
         </div>
-      </StyledActivityContainer>)
+      </StyledActivityContainerForFavorites>)
 }

@@ -14,18 +14,16 @@ export default function SearchByCost() {
   const [contextValues] = useContext(SlideValueContext);
   const [activityData, setActivityData] = useState([]);
   const searchCardStyle = {
-    margin: "30px",
+    margin: "20px",
     width: "820px",
     minHeight: "100px",
     background: "#172251",
+    borderRadius: "10px",
   };
 
   const searchCardStyle2 = {
     display: "flex",
-    flexDirection: "column",
-    position: "relative",
-    top: "30px",
-    left: "145px",
+    flexDirection: "column"
   };
 
   const searchBoxStyle = {
@@ -74,7 +72,7 @@ export default function SearchByCost() {
             <ActivityCardDetails activity={activityData} />
           </React.Fragment>
         ) : (
-            <div>No activity was found!</div>
+            <div style={{ margin: "0 auto", height: "60px" }} >No activity was found!</div>
           )}
       </StyledActivityContainer>
 

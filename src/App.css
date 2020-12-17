@@ -1,40 +1,76 @@
 body {
-    background-color: #4B5C8D;
-    user-select: none;
+  background-color: #4b5c8d;
+  user-select: none;
 }
 
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
-
 .container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .welcome {
-    padding: 10px;
-    margin: 40px;
+  padding: 10px;
+  margin: 40px;
 
-    font-family: 'Mountains of Christmas';
-    font-size: 20px;
-    font-weight: 900;
-    letter-spacing: 7px;
-    text-align: center;
+  font-family: "Mountains of Christmas";
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 7px;
+  text-align: center;
 
-    color: #F7B900;
+  color: #f7b900;
 }
 
+.pagination-container {
+  width: 820px;
+  height: 50px;
+  margin: 20px auto;
+
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: center;
+  align-items: center;
+
+  background-color: #172251;
+  border-radius: 10px;
+}
+
+.page-link {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+
+  font-family: "'Mountains of Christmas'";
+  font-weight: 900;
+  font-size: 20px;
+
+  color: #f7b900;
+  background-color: #6679ae;
+  border-radius: 8px;
+  margin: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 @media (max-width: 640px) {
-    .welcome {
-        font-size: 10px; 
-    }     
+  .welcome {
+    font-size: 10px;
   }
+
+  .pagination-container {
+    width: 420px;
+    height: 40px;
+  }
+}
 
 .lightrope {
   text-align: center;
@@ -69,7 +105,7 @@ body {
   animation-duration: 2s;
 }
 
-.lightrope li:nth-child(2n+1) {
+.lightrope li:nth-child(2n + 1) {
   /* background: cyan; */
   background: rgba(0, 255, 255, 0.4);
   /* box-shadow: 0px 4.6666666667px 24px 3px rgba(0, 255, 255, 0.5); */
@@ -78,7 +114,7 @@ body {
   animation-duration: 0.4s;
 }
 
-.lightrope li:nth-child(4n+2) {
+.lightrope li:nth-child(4n + 2) {
   /* background: #f70094; */
   background: rgba(247, 0, 148, 0.4);
   /* box-shadow: 0px 4.6666666667px 24px 3px #f70094; */
@@ -91,7 +127,7 @@ body {
   animation-duration: 1.8s;
 }
 
-.lightrope li:nth-child(3n+1) {
+.lightrope li:nth-child(3n + 1) {
   animation-duration: 1.4s;
 }
 
@@ -126,7 +162,8 @@ body {
 }
 
 @keyframes flash-1 {
-  0%, 100% {
+  0%,
+  100% {
     background: #00f7a5;
     box-shadow: 0px 4.6666666667px 24px 3px #00f7a5;
   }
@@ -137,7 +174,8 @@ body {
 }
 
 @keyframes flash-2 {
-  0%, 100% {
+  0%,
+  100% {
     background: cyan;
     box-shadow: 0px 4.6666666667px 24px 3px cyan;
   }
@@ -148,7 +186,8 @@ body {
 }
 
 @keyframes flash-3 {
-  0%, 100% {
+  0%,
+  100% {
     background: #f70094;
     box-shadow: 0px 4.6666666667px 24px 3px #f70094;
   }
