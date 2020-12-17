@@ -14,10 +14,15 @@ export default function Header() {
     const MusicControl = styled.button`
     background-color: #4b5c8d;
     color: #F7B900;
-    font-weight: 2rem;
     font-size:20px;
     border-color: #F7B900;
-    border-radius: 20%;
+    border-radius: 10px;
+    font-family: 'Mountains of Christmas';
+    font-weight: 900;
+    letter-spacing: 6px;
+    height: 40px;
+    outline:none;
+
     &:hover {
       background-color: #172251;
       color:#72CD55;
@@ -31,7 +36,10 @@ export default function Header() {
     }, []);
 
     const Buttons = styled.div`
-    align-self: flex-end;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        font-size: 20px;
     `;
 
     const play = () => {
@@ -57,8 +65,9 @@ export default function Header() {
                     Bored Busters
                 </Link>
                 <Buttons>
-                    <MusicControl onClick={play}>Play!</MusicControl>{" "}
-                    <MusicControl onClick={stop}>Stop!</MusicControl>
+                    <MusicControl onClick={theme === "onSnow" ? stop : play}>
+                        {theme === "onSnow" ? "Turn off Christmas mode" : "Turn on Christmas mode"}!
+                    </MusicControl>
                 </Buttons>
             </StyledHeader>
         </React.Fragment>
