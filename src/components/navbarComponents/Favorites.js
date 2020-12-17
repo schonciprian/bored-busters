@@ -128,7 +128,7 @@ export default function Favorites() {
         <SliderBar className="slider" />
 
         <StyledGetButton style={{ margin: "5px auto" }} onClick={filterActivities}>
-          Give me an activity!
+          Filter my favorites!
         </StyledGetButton>
 
         {searchedFavorites.length === 0 && isFiltered ? (<div className="no-result">No results were found</div>) : ("")};
