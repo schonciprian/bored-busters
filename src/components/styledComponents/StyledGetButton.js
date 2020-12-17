@@ -1,11 +1,14 @@
 import styled from "styled-components";
 
 export default styled.div`
-  width: 400px;
+  width: 450px;
   height: 50px;
   margin: 20px;
 
-  font-size: 20px;
+  font-family: 'Mountains of Christmas';
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: 7px;
 
   display: flex;
   align-items: center;

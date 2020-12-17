@@ -5,24 +5,23 @@ export default styled.div`
     min-height: 100px;
     margin: 20px;
 
-    font-family: 'Chelsea Market';
+    font-family: 'Mountains of Christmas';
     font-size: 20px;
-    font-weight: 400;
+    font-weight: 900;
     letter-spacing: 7px;
 
     display: flex;
+    flex-basis: auto;
     flex-direction: column;
-    align-items: flex-start;
-    /* justify-content: center; */
+    
 
     border-radius: 10px;
    
     background: #172251;
-    /* background: cyan; */
     color: #72CD55;
 
     div {
-        margin: 25px 15px 25px 15px;
+        margin: 25px 15px 10px 15px;
     }
 
     a {
@@ -33,16 +32,5 @@ export default styled.div`
 
     a:hover {
       color: #FACF3E;
-    }
-
-    .details {
-      width: 780px;
-      color: #111111;
-      background-color: #6679AE;
-      border-radius: 20px;
-      margin: 20px auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
 `;

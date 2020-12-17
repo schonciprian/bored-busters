@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export default styled.div`
-    width: 820px;
+    width: 620px;
     min-height: 100px;
     margin: 20px;
 
@@ -12,6 +12,7 @@ export default styled.div`
 
     display: flex;
     flex-direction: column;
+    /* flex-wrap: row; */
     align-items: flex-start;
     /* justify-content: center; */
 
@@ -22,7 +23,7 @@ export default styled.div`
     color: #72CD55;
 
     div {
-        margin: 25px 15px 25px 15px;
+        margin: 25px 15px 10px 15px;
     }
 
     a {
@@ -36,7 +37,8 @@ export default styled.div`
     }
 
     .details {
-      width: 780px;
+      width: 600px;
+      min-height: 375px;
       color: #111111;
       background-color: #6679AE;
       border-radius: 20px;

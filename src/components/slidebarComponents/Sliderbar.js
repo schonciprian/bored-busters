@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Slider, Rail, Handles, Tracks, Ticks } from "react-compound-slider";
-import { SliderRail, Handle, Track, Tick } from "./SlideBarComponents";
-import { SlideValueContext } from "../contextComponents/SlideValueContext";
+import { SliderRail, Handle, Track, Tick } from "./SlidebarElements";
+import { SlideValueContext } from "../../contextComponents/SlideValueContext";
 
 const SearchByCost = () => {
   const [contextValues, setContextValues] = useContext(SlideValueContext);
@@ -11,7 +11,7 @@ const SearchByCost = () => {
   };
 
   const [domain] = useState([0, 10000]);
-  const [values, setValues] = useState([0, 5000]);
+  const [values, setValues] = useState([0, 10000]);
   const reversed = false;
 
   const onChange = (values) => {
@@ -20,7 +20,7 @@ const SearchByCost = () => {
   };
 
   return (
-    <div style={{ height: 150, width: "100%" }}>
+    <div style={{ height: 50, width: "100%", display: "flex", justifyContent: "center", alignItems: "flex-start" }}>
       <Slider
         mode={2}
         step={1000}

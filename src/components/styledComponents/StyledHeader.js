@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export default styled.div`
-    height: 80px;
-    padding: 20px;
+    height: 120px;
+    padding: 20px 20px 0 20px;
 
     font-family: 'Mountains of Christmas';
     font-size: 60px;

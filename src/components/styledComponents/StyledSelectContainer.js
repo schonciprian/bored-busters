@@ -18,8 +18,8 @@ export default styled.div`
     background-color: #172251;
     color: #72CD55;
 
-    .input {
-        width: 100px;
+    .option {
+        width: auto;
         height: 40px;
         border: none;
         border-radius: 10px;
@@ -34,11 +34,11 @@ export default styled.div`
         outline: none;
     }
 
-    .input::placeholder {
+    .option::placeholder {
         color: #72CD55;
     }
 
-    .input:focus {
-        width: 120px;
+    .option:focus {
+        width: auto;
     }
 `;
