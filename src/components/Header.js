@@ -44,6 +44,7 @@ export default function Header() {
 
     const play = () => {
         audio.play();
+        audio.volume = 0.05;
         setTheme("onSnow");
     };
 
