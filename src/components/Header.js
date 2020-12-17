@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import StyledHeader from "./styledComponents/StyledHeader"
+import StyledThemeSwitcher from "./styledComponents/StyledThemeSwitcher"
 import { Link } from "react-router-dom"
 import styled from "styled-components";
 import { ThemeContext } from '../contextComponents/ThemeContext';
@@ -35,13 +36,6 @@ export default function Header() {
         setAudio(new Audio("/Frank Sinatra - Santa Claus Is Comin' to Town (Audio).mp3"));
     }, []);
 
-    const Buttons = styled.div`
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        font-size: 20px;
-    `;
-
     const play = () => {
         audio.play();
         audio.volume = 0.5;
@@ -65,11 +59,11 @@ export default function Header() {
                 <Link to="/">
                     Bored Busters
                 </Link>
-                <Buttons>
+                <StyledThemeSwitcher>
                     <MusicControl onClick={theme === "onSnow" ? stop : play}>
                         {theme === "onSnow" ? "Turn off Christmas mode" : "Turn on Christmas mode"}!
                     </MusicControl>
-                </Buttons>
+                </StyledThemeSwitcher>
             </StyledHeader>
         </React.Fragment>
     )
