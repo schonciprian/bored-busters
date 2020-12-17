@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { ThemeContext } from '../contextComponents/ThemeContext';
 import SnowFlakes from "./SnowFlakes";
 import "../Snowflake.css";
+import LightRope from './LightRope';
 
 
 export default function Header() {
@@ -45,54 +46,13 @@ export default function Header() {
 
     return (
         <React.Fragment>
-            {theme === "onSnow" ?
-                <SnowFlakes /> :
-                <></>}
             <StyledHeader>
-                <ul className="lightrope">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
+                {theme === "onSnow" ?
+                    <React.Fragment>
+                        <SnowFlakes />
+                        <LightRope />
+                    </React.Fragment> :
+                    <></>}
                 <Link to="/">
                     Bored Busters
                 </Link>
