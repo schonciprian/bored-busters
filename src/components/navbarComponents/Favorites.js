@@ -18,7 +18,7 @@ export default function Favorites() {
 
 
   const [contextValues] = useContext(SlideValueContext);
-  const [favorites] = useContext(FavoriteContext);
+  const [favorites, setFavorites] = useContext(FavoriteContext);
 
   const types = ["education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork"]
   const [activityType, setType] = useState("");
@@ -100,7 +100,6 @@ export default function Favorites() {
     setCurrentPage(currentPage - 1);
   }
 
-  console.log(indexOfFirstPostOriginals, indexOfLastPostOriginals, originalCurrentPost, originalPageNumbers)
 
   return favorites.length !== 0 ? (
     <StyledFavoriteContainer>
@@ -160,7 +159,10 @@ export default function Favorites() {
       {!isFiltered ? originalCurrentPost.map((fav) => (
         <StyledActivityContainerForFavorites>
           <React.Fragment>
-            <FavoriteButton activity={fav} setSearchedFavorites={setSearchedFavorites} />
+            <FavoriteButton activity={fav}
+              setFavorites={setFavorites}
+              setCurrentPageOriginals={setCurrentPageOriginals}
+              currentPageOriginals={currentPageOriginals} />
             <ActivityCardDetails activity={fav} />
           </React.Fragment>
         </StyledActivityContainerForFavorites>)
