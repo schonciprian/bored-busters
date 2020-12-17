@@ -131,6 +131,9 @@ export default function Favorites() {
         <StyledGetButton style={{ margin: "5px auto" }} onClick={filterActivities}>
           Give me an activity!
         </StyledGetButton>
+
+        {searchedFavorites.length === 0 && isFiltered ? (<div className="no-result">No results were found</div>) : ("")};
+
       </StyledFavoriteSearchContainer>
 
       {currentPost.map((fav) => (
