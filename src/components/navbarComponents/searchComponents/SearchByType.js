@@ -26,7 +26,7 @@ export default function SearchByType() {
           <select className="option" onChange={e => setType(e.target.value)}>
           <option value="">all</option>
           {types.map((type) => (
-            <option value={type}>{type}</option>
+            <option ke={type} value={type}>{type}</option>
           ))}
         </select>
       </StyledSelectContainer>
@@ -48,7 +48,7 @@ export default function SearchByType() {
           <select className="option" onChange={e => setType(e.target.value)} >
             <option value="">all</option>
             {types.map((type) => (
-              <option value={type}>{type}</option>
+              <option key={type} value={type}>{type}</option>
             ))}
           </select>
         </StyledSelectContainer>
