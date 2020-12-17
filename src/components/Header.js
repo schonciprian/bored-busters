@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import StyledHeader from "./styledComponents/StyledHeader"
 import { Link } from "react-router-dom"
 import styled from "styled-components";
+import { ThemeContext } from '../contextComponents/ThemeContext';
+import SnowFlakes from "./SnowFlakes";
+import "../Snowflake.css";
+
 
 export default function Header() {
+    const [theme, setTheme] = useContext(ThemeContext);
 
     const MusicControl = styled.button`
     background-color: #4b5c8d;
@@ -30,65 +35,72 @@ export default function Header() {
 
     const play = () => {
         audio.play();
+        setTheme("onSnow");
     };
 
     const stop = () => {
         audio.pause();
+        setTheme("offSnow");
     };
 
     return (
-        <StyledHeader>
-            <ul className="lightrope">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-            <Link to="/">
-                Bored Busters
-            </Link>
-            <Buttons>
-                <MusicControl onClick={play}>Play!</MusicControl>{" "}
-                <MusicControl onClick={stop}>Stop!</MusicControl>
-            </Buttons>
-        </StyledHeader>
+        <React.Fragment>
+            {theme === "onSnow" ?
+                <SnowFlakes /> :
+                <></>}
+            <StyledHeader>
+                <ul className="lightrope">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <Link to="/">
+                    Bored Busters
+                </Link>
+                <Buttons>
+                    <MusicControl onClick={play}>Play!</MusicControl>{" "}
+                    <MusicControl onClick={stop}>Stop!</MusicControl>
+                </Buttons>
+            </StyledHeader>
+        </React.Fragment>
     )
 }
