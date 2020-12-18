@@ -20,7 +20,8 @@ export default function SearchByType() {
       .then((response) => setActivityByType(response.data));
   };
 
-  return activityByType.length !== 0 ? (
+
+  return (
     <StyledActivityContainer>
       <StyledSelectContainer>Activity types:
           <select className="option" onChange={e => setType(e.target.value)}>
@@ -30,31 +31,20 @@ export default function SearchByType() {
           ))}
         </select>
       </StyledSelectContainer>
+
       <StyledGetButton style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }} onClick={getActivityByType}>
         Give me an activity!
       </StyledGetButton>
 
-      {activityByType.activity ? (
-        <React.Fragment>
-          <FavoriteButton activity={activityByType} />
-          <ActivityCardDetails activity={activityByType} />
-        </React.Fragment>
-      ) : (<div>No activity was found!</div>)}
+      {activityByType.length !== 0 && (
+        activityByType.activity ? (
+          <React.Fragment>
+            <FavoriteButton activity={activityByType} />
+            <ActivityCardDetails activity={activityByType} />
+          </React.Fragment>
+        ) : (<div>No activity was found!</div>)
+      )}
 
     </StyledActivityContainer>
-  ) : (
-      <StyledActivityContainer>
-        <StyledSelectContainer>Activity types:
-          <select className="option" onChange={e => setType(e.target.value)} >
-            <option value="">all</option>
-            {types.map((type) => (
-              <option key={type} value={type}>{type}</option>
-            ))}
-          </select>
-        </StyledSelectContainer>
-        <StyledGetButton style={{ marginRight: "auto", marginLeft: "auto", minHeight: "50px" }} onClick={getActivityByType}>
-          Give me an activity!
-        </StyledGetButton>
-      </StyledActivityContainer>
-    );
+  );
 }
