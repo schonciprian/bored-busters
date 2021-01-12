@@ -1,3 +1,49 @@
+This is our frontend application in React using the Bored API.
+
+## How to Install
+
+In the project directory, run:
+
+```bash
+  npx create-react-app
+```
+
+After the process is finished, run:
+
+```bash
+  npm install
+```
+
+And if anything else is missing, run:
+
+```bash
+  npm install <import name it requires>
+```
+
+to install any further imports
+
+## How to start the application
+
+In the project directory, you can run:
+
+```bash
+  npm start
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+## Used API
+
+[BoredAPI](https://www.boredapi.com/)
+
+## Author
+
+- Szabó Friderika, Takács Vivien, Vágány Edit, Schőn Ciprián
+
+# Contact
+
+- szabomidu@gmail.com
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
