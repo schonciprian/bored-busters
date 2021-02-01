@@ -38,11 +38,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Author
 
-- Szabó Friderika, Takács Vivien, Vágány Edit, Schőn Ciprián
+- Schőn Ciprián, Szabó Friderika, Takács Vivien, Vágány Edit
 
 # Contact
 
-- szabomidu@gmail.com
+- schon.ciprian@gmail.com
 
 # Getting Started with Create React App
 
